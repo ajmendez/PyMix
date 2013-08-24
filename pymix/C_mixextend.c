@@ -1,6 +1,6 @@
 
 #include <Python.h>
-#include <arrayobject.h> 
+#include <numpy/arrayobject.h> 
 
 #include <stdlib.h>
 #include <math.h>

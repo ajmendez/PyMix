@@ -30,40 +30,18 @@
 #
 ################################################################################
 from distutils.core import setup, Extension
-from distutils.errors import DistutilsExecError
+import distutils.sysconfig
+import numpy.distutils.misc_util
 import os
 import sys
 
-def guess_include_dirs():
-    """
-    The C extension requires the paths to Python.h and the numpy interface arrayobject.h.
-    It is assumed that numpy is installed in the same directory structure as the Python installation
-    setup.py is run with.
-    
-    The paths are assembled by making use of sys.prefix and sys.version_info.
-    
-    ( There is probably a more canonical version of doing this ...)
-    """
-    prefix = sys.prefix  # prefix of the python installation
-    pyvs = str(sys.version_info[0]) + '.' + str(sys.version_info[1])  # major Python verion
-    
-    pypath = prefix + '/include/python' +pyvs  # path to Python.h 
+# Get the arrayobject.h(numpy) and python.h(python) header file paths:
+include_dirs = numpy.distutils.misc_util.get_numpy_include_dirs()
+include_dirs.insert(0, distutils.sysconfig.get_python_inc())
 
-    numpypath =  prefix + '/lib/python' +pyvs + '/site-packages/numpy/core/include/numpy'  # path to arrayobject.h
 
-    return [pypath, numpypath]
-
-include_dirs = guess_include_dirs()
-
-# print '-------------------------------------------------------------------------------'
-# print 'The following include paths are used for compilation of the C extension:\n'
-# print 'Python.h: '+include_dirs[0]
-# print 'arrayobject.h: '+include_dirs[1],'\n'
-# print 'In case the installation fails, check these paths first.'
-# print '-------------------------------------------------------------------------------\n'
-
-setup(name="pymix",
-      description="PyMix -- Python mixture package",
+setup(name='pymix',
+      description='PyMix -- Python mixture package',
       version="0.8b",
       url ="http://www.pymix.org",
       
@@ -71,18 +49,18 @@ setup(name="pymix",
       author_email="georgi@molgen.mpg.de",
       license='LICENSE.txt',
       
-      packages = ['pymix'],
+      packages = ['pymix', 'pymix.examples', 'pymix.tests'],
       
-      ext_modules = [Extension('pymix._C_mixextend',
+      ext_modules = [Extension('_C_mixextend',
                                ['pymix/C_mixextend.c'],
                                include_dirs = include_dirs,
                                libraries = ['gsl', 'gslcblas' ,'m'],
                                )
                      ],
 
-
-      # py_modules = ['mixture','mixtureHMM','mixtureunittests','alphabet', 'plotMixture',
-      #               'bioMixture', 'AminoAcidPropertyPrior','mixtureHMMunittests','randomMixtures', 'setPartitions'],
+      requires = [
+          'numpy',
+      ]
 
      )
 
