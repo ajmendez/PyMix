@@ -29,7 +29,8 @@
 #
 #
 ################################################################################
-from distutils.core import setup, Extension,DistutilsExecError
+from distutils.core import setup, Extension
+from distutils.errors import DistutilsExecError
 import os
 import sys
 
@@ -54,31 +55,34 @@ def guess_include_dirs():
 
 include_dirs = guess_include_dirs()
 
-print '-------------------------------------------------------------------------------'
-print 'The following include paths are used for compilation of the C extension:\n'
-print 'Python.h: '+include_dirs[0]
-print 'arrayobject.h: '+include_dirs[1],'\n'
-print 'In case the installation fails, check these paths first.'
-print '-------------------------------------------------------------------------------\n'
+# print '-------------------------------------------------------------------------------'
+# print 'The following include paths are used for compilation of the C extension:\n'
+# print 'Python.h: '+include_dirs[0]
+# print 'arrayobject.h: '+include_dirs[1],'\n'
+# print 'In case the installation fails, check these paths first.'
+# print '-------------------------------------------------------------------------------\n'
 
 setup(name="pymix",
-      version="0.8a",
-      url ="http://algorithmics.molgen.mpg.de/mixture/",
-      description="Python Distribution Utilities",
-      license='LGPL',
+      description="PyMix -- Python mixture package",
+      version="0.8b",
+      url ="http://www.pymix.org",
+      
       author="Benjamin Georgi",
       author_email="georgi@molgen.mpg.de",
-
-      ext_modules = [Extension('_C_mixextend',
-                               ['C_mixextend.c'],
+      license='LICENSE.txt',
+      
+      packages = ['pymix'],
+      
+      ext_modules = [Extension('pymix._C_mixextend',
+                               ['pymix/C_mixextend.c'],
                                include_dirs = include_dirs,
                                libraries = ['gsl', 'gslcblas' ,'m'],
                                )
                      ],
 
 
-      py_modules = ['mixture','mixtureHMM','mixtureunittests','alphabet', 'plotMixture',
-                    'bioMixture', 'AminoAcidPropertyPrior','mixtureHMMunittests','randomMixtures', 'setPartitions'],
+      # py_modules = ['mixture','mixtureHMM','mixtureunittests','alphabet', 'plotMixture',
+      #               'bioMixture', 'AminoAcidPropertyPrior','mixtureHMMunittests','randomMixtures', 'setPartitions'],
 
      )
 

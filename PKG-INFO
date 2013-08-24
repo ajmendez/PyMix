@@ -2,9 +2,9 @@ Metadata-Version: 1.0
 Name: pymix
 Version: 0.8a
 Summary: Python Distribution Utilities
-Home-page: http://algorithmics.molgen.mpg.de/mixture/
+Home-page: http://www.pymix.org
 Author: Benjamin Georgi
 Author-email: georgi@molgen.mpg.de
 License: LGPL
-Description: UNKNOWN
-Platform: UNKNOWN
+Description: The Python Mixture Package (PyMix) is a freely available Python library implementing algorithms and data structures for a wide variety of data mining applications with basic and extended mixture models.
+Platform: python

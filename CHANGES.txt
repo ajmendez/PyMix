@@ -1,0 +1,1 @@
+v0.8b, 2013-08-23 -- Cleaned up package release.
