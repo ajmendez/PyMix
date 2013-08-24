@@ -2,23 +2,28 @@ pymix
 =====
 
 PyMix - The Python mixture package  
-Author: Benjamin Georgi
+Author: Alexander Mendez 
+Original Author: Benjamin Georgi
 Contact: georgi@molgen.mpg.de
-Contributors: Alexander Mendez
+
 
 Installation Instructions:
 --------------------------
 
 * Required Packages
 
-        # Python (version 2.5+ recommended, tested with 2.7)
-        # Numpy  (version 1.6?, tested with 1.6)
-        # GSL GNU Scientific library
+    Python (version 2.5+ recommended, tested with 2.7)
     
+    Numpy  (version 1.6?, tested with 1.6)
+    
+    GSL GNU Scientific library
+
+
 * Optional Packages
 
-        # GHMM for mixtures of HMMs
-        # pylab for plotting functions in plotMixture.py
+    GHMM for mixtures of HMMs
+    
+    pylab for plotting functions in plotMixture.py
 
 * How to install ?
 
@@ -31,6 +36,10 @@ Installation Instructions:
     If you wish to pull down the github version you can use pip:
     
         pip install git+https://github.com/ajmendez/PyMix.git
+    
+    It is now part of pypi:
+        
+        pip install pymix
     
     After the installation is completed I would recommend to run 
     mixtureunittests.py to check whether everything is in order.
