@@ -1,7 +1,7 @@
 from pymix import mixture
+from pymix import plotMixture
 
-
-def run():
+def setup():
     # Setting up a two component mixture over four features.
     # Two features are Normal distributions, two discrete.
 
@@ -24,12 +24,38 @@ def run():
     # intializing mixture
     pi = [0.4,0.6]
     m = mixture.MixtureModel(2,pi,[c1,c2])
+    return m
+
+def setup2():
+    # Setting up a two component mixture over four features.
+    # Two features are Normal distributions, two discrete.
+
+    # initializing atomar distributions for first component
+    n1 = mixture.NormalDistribution(1.0,1.5)
+    n2 = mixture.NormalDistribution(2.0,0.5)
+    d1 = mixture.DiscreteDistribution(4,[0.1,0.4,0.4,0.1])
+    
+    c1 = mixture.ProductDistribution([n1,n2])
+    c2 = mixture.ProductDistribution([n1,d1])
+    
+    # intializing mixture
+    pi = [0.4,0.6]
+    m = mixture.MixtureModel(2,pi,[c1,c2])
+    return m
+
+
+def run():
+    m = setup()
+    
     print "Initial parameters"
     print m
     # Now that the model is complete we can start using it.
 
     # sampling data
     data = m.sampleDataSet(20)
+    
+    plotMixture.plotConstrainedData(data)
+    pylab.show()
     
     # randomize model parameters
     m.modelInitialization(data)

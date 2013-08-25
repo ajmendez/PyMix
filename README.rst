@@ -2,9 +2,10 @@ pymix
 =====
 
 PyMix - The Python mixture package  
+
 Author: Alexander Mendez 
-Original Author: Benjamin Georgi
-Contact: georgi@molgen.mpg.de
+
+Original Author: Benjamin Georgi <georgi@molgen.mpg.de>
 
 
 Installation Instructions:
