@@ -7,4 +7,3 @@ Author: Benjamin Georgi
 Author-email: georgi@molgen.mpg.de
 License: LGPL
 Description: The Python Mixture Package (PyMix) is a freely available Python library implementing algorithms and data structures for a wide variety of data mining applications with basic and extended mixture models.
-Platform: python
