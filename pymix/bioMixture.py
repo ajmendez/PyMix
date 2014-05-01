@@ -35,7 +35,7 @@ e.g. searching for transcription factor binding sites using mixtures of PWMs (po
 """
 
 import mixture
-import numarray
+from numpy import numarray
 import re
 
 
